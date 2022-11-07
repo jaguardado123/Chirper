@@ -1,7 +1,7 @@
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
 
 # Chirper with Blade
-Created the web application Chirper with Blade to grow my skills with PHP and learn to build web apps using Laravel. I followed the tutorial from the [Laravel Bootcamp](https://bootcamp.laravel.com/blade/installation) to build my Chirper web app.
+I created the web application Chirper with Blade to grow my skills with PHP and learn to use Laravel. I followed the tutorial from the [Laravel Bootcamp](https://bootcamp.laravel.com/blade/installation) to build Chirper.
 
 ## Installation
 To run Chirper on your computer or virtual machine you'll need to install the following.
