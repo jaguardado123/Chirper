@@ -36,7 +36,15 @@ class ChirpController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // Validate message doesn't exceed 255 character limit.
+        $validated = $request->validate([
+            'message' => 'required|string|max:255',
+        ]);
+
+        $request->user()->chirps()->create($validated);
+
+        // Redirect to chirps page.
+        return redirect(route('chirps.index'));
     }
 
     /**

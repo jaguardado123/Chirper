@@ -15,6 +15,9 @@ class CreateChirpsTable extends Migration
     {
         Schema::create('chirps', function (Blueprint $table) {
             $table->id();
+            // Relationship between user and chirp.
+            $table->foreignId('user_id')->constrained()->cascadeOnDelete();
+            $table->string('message');
             $table->timestamps();
         });
     }
