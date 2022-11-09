@@ -13,4 +13,10 @@ class Chirp extends Model
     protected $fillable = [
         'message',
     ];
+
+    // Defines a relationship between chirp and user.
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }

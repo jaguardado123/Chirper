@@ -14,8 +14,14 @@ class ChirpController extends Controller
      */
     public function index()
     {
-        // return 'Hello, World!';
-        return view('chirps.index');
+        // Return index page and all messages.
+        /*
+            with -> eager loads data
+            latest -> returns in reverse chronological order
+        */
+        return view('chirps.index', [
+            'chirps' => Chirp::with('user')->latest()->get(),
+        ]);
     }
 
     /**
@@ -41,10 +47,11 @@ class ChirpController extends Controller
             'message' => 'required|string|max:255',
         ]);
 
+        // Create record belonging to logged in user of chirp.
         $request->user()->chirps()->create($validated);
 
         // Redirect to chirps page.
-        return redirect(route('chirps.index'));
+        return redirect(route('chirps.index', ['test' => 5]));
     }
 
     /**
