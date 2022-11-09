@@ -51,7 +51,7 @@ class ChirpController extends Controller
         $request->user()->chirps()->create($validated);
 
         // Redirect to chirps page.
-        return redirect(route('chirps.index', ['test' => 5]));
+        return redirect(route('chirps.index'));
     }
 
     /**
@@ -73,7 +73,13 @@ class ChirpController extends Controller
      */
     public function edit(Chirp $chirp)
     {
-        //
+        // Make sure user accessing route is authorized.
+        $this->authorize('update', $chirp);
+
+        // Return edit page.
+        return view('chirps.edit', [
+            'chirp' => $chirp,
+        ]);
     }
 
     /**
@@ -85,7 +91,19 @@ class ChirpController extends Controller
      */
     public function update(Request $request, Chirp $chirp)
     {
-        //
+        // Make sure user accessing route is authorized.
+        $this->authorize('update', $chirp);
+
+        // Validate message doesn't exceed 255 character limit.
+        $validated = $request->validate([
+            'message' => 'required|string|max:255',
+        ]);
+
+        // Update the database.
+        $chirp->update($validated);
+
+        // Redirect to Chirp home page.
+        return redirect(route('chirps.index'));
     }
 
     /**
